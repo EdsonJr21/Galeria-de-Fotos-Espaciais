@@ -12,6 +12,7 @@ class loginForms(forms.Form):
             }
         )
     )
+    
     senha = forms.CharField(
         label= "senha",
         required= True,
@@ -36,6 +37,7 @@ class cadastroForms(forms.Form):
             }
         )
     )
+
     email = forms.EmailField(
         label= "Email",
         required= True,
@@ -47,6 +49,7 @@ class cadastroForms(forms.Form):
             }
         )
     )
+    
     senha_1 = forms.CharField(
         label= "Senha",
         required= True,
@@ -58,6 +61,7 @@ class cadastroForms(forms.Form):
             }
         )
     )
+    
     senha_2 = forms.CharField(
         label= "Confirme sua senha",
         required= True,
@@ -69,3 +73,23 @@ class cadastroForms(forms.Form):
             }
         )
     )
+    
+    def clean_nome_cadastro(self):
+        nome = self.cleaned_data.get("nome_cadastro")
+        
+        if nome:
+            nome = nome.strip()
+            if " " in nome:
+                raise forms.ValidationError("Não é permitido incluir espaços no campo Nome de cadastro")
+            else:
+                return nome          
+            
+    def clean_senha_2(self):
+        senha_1 = self.cleaned_data.get("senha_1")
+        senha_2 = self.cleaned_data.get("senha_2")
+        
+        if senha_1 and senha_2:
+            if senha_1 != senha_2:
+                raise forms.ValidationError("As senhas não são iguais")
+            else:
+                return senha_2
