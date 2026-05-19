@@ -1,7 +1,5 @@
 # Galeria de Fotos Espaciais - Django Project :rocket:
 
-> **Nota:** Este projeto está em desenvolvimento. Algumas funcionalidades podem não estar totalmente operacionais.
-
 ## Descrição
 
 Este projeto Django implementa uma galeria de fotos espaciais com recursos de busca, categorias, paginação e administração. O sistema agora permite o cadastro e login de usuários, expandindo as possibilidades de gerenciamento e interação com a galeria.
